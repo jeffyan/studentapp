@@ -1,0 +1,43 @@
+﻿<div id="studentlist">
+    <h2>Student List:</h2>
+    <ul data-bind="foreach: students">
+        <li>
+            <span data-bind="text: FirstName"></span>&nbsp<span data-bind="text: LastName"></span>
+            <a data-bind="click: load">Load</a>
+        </li>
+    </ul>
+</div>
+
+<div id="student" data-bind="visible: showStudent">
+    <h2>Student Fees:</h2>
+    <h3 data-bind="text: selectedStudent.FullName"></h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Due Date</th>
+                <th>Name</th>
+                <th>Amount Assessed</th>
+                <th>Amount Paid</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: selectedStudent.Fees">
+            <tr>
+                <td data-bind="text: Rank"></td>
+                <td data-bind="text: DueDate"></td>
+                <td data-bind="text: Name"></td>
+                <td data-bind="text: AmountAssessed"></td>
+                <td data-bind="text: AmountPaid"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h4>Pay Fees</h4>
+        <select data-bind="options: paymentMethods, value: paymentType"></select>
+        <span>Amount</span>
+        <input type="text" data-bind="value: amount" />
+        <button data-bind="click: pay">Pay</button>
+    </div>
+</div>
